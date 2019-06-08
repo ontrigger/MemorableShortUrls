@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="{% static "assets/css/styles.css" %}">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <div id="logo"><a class="logo" href="{% url 'index' %}">short.it</a>
+            <p class="lead text-center text-muted" id="logo-p">Turn your links into memorable words!</p>
+        </div>
+    </header>
+    <section id="shortbox">
+        <h1>Paste your link here</h1>
+        <form role="form" action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.url }}
+{#                <input class="form-control" type="url"#}
+{#                       id="url"#}
+{#                       placeholder="Enter your link here">#}
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="shortbutt" type="submit">Shorten It!</button>
+                </div>
+            </div>
+        </form>
+        <p class="text-center text-secondary">short.it is a simple web app for creating human-memorizable links</p>
+        {% if shortlink %}
+            <hr>
+            <h1 id="linkready-text">Your link is ready!</h1>
+            <div id="shorturl-result"><p id="shorturl-result-link" >{{ shortlink }}</p></div>
+        {% endif %}
+    </section>
+
+{% endblock %}

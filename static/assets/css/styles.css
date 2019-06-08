@@ -1,0 +1,127 @@
+header {
+    text-align: center;
+    padding: 0 10px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+header h1 {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 28px;
+    margin-top: 30px;
+}
+
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 40px 0 30px;
+}
+
+.content figure {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.content figcaption {
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.content div.dropdown {
+    margin: 20px auto;
+    width: 130px;
+}
+
+.content blockquote p {
+    font-size: 14px;
+    padding: 15px 20px;
+    border-left: 3px solid #edecf2;
+    background-color: #f9f9fb;
+}
+
+header a.logo {
+    font: 900 62px asap, arial;
+    color: #0186da;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 2px #ddd;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+body {
+    background: #f9f9f9;
+}
+
+#shortbox {
+    background: #fff;
+    box-shadow: 0 1px 6px #ccc;
+    border-radius: 2px;
+    margin: 0 auto 20px auto;
+    padding: 10px 30px 5px;
+}
+
+.h1, h1 {
+    margin: 5px auto 30px auto;
+    font: bold 1.4em asap, arial;
+    text-align: center;
+    color: rgb(77, 83, 89);
+    letter-spacing: -1px;
+    font-size: 1.8em;
+    font-family: ‘Oswald’, sans-serif;;
+}
+
+.input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+    color: #000;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-right: 0;
+    border-radius: 3px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    background-color: rgb(237, 237, 237);
+    /*box-sizing: border-box;*/
+    max-height: 48px;
+    height: 48px;
+}
+
+#logo {
+    padding: 40px 20px 25px;
+    max-height: 191px;
+}
+
+.text-center.text-secondary {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#shorturl-result {
+    background: rgb(237, 237, 237);
+    height: 106px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    background-color: rgb(237, 237, 237);
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
+}
+
+#linkready-text {
+    margin-bottom: 8px;
+}
+
+#logo-p {
+    font-size: 140%;
+}
+
+#shorturl-result-link {
+    text-align: center;
+}
+
