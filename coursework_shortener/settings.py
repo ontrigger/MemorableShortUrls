@@ -11,20 +11,30 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+root = environ.Path(__file__) - 2
+SITE_ROOT = root()
+
+env = environ.Env(
+    DEBUG=(bool, True),
+    DATABASE_URL=(str, 'sqlite:///database/default.db'),
+    ALLOWED_HOSTS=(list, []),
+)
+environ.Env.read_env(env_file=os.path.join(root.root, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=hx*6l9m50!)p8wqnk4b4ot-g1#ye!_l)5q(qs4ykn&q&%7vd)'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
+TEMPLATE_DEBUG = DEBUG
+
 DOCKER = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -37,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'urlshort.apps.UrlshortConfig',
     'bootstrap4',
-
 ]
 
 MIDDLEWARE = [
@@ -75,27 +84,16 @@ WSGI_APPLICATION = 'coursework_shortener.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-if DOCKER:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'HOST': 'db',
-            'PORT': 5432,
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': 'db', # set in docker-compose.yml
+        'PORT': 5432 # default postgres port
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'url_shortener',
-            'USER': 'admin',
-            'PASSWORD': '',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
